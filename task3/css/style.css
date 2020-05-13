@@ -38,7 +38,7 @@ a.icon {
   100% { transform: rotate(360deg); }
 }
 #content {
-	display: none;
+	display: block;
 }
 /* The dots/bullets/indicators */
 .dot {
@@ -106,11 +106,15 @@ a.icon {
 .header .header-area {
 	display: flex;
 	justify-content: space-between;
-	padding: 38px 0;
 	align-items: center;
+	border-bottom: solid 1.5px #fff;
 }
 .header .header-area .nav-area ul.nav li a {
+	padding-bottom: 1px;
 	text-decoration: none;
+}
+.header .header-area .nav-area ul.nav li a:hover {
+	border-bottom: solid 1px #ffffff;
 }
 .banner {
 	background-image: url(../image/bg-main.jpg);
@@ -140,6 +144,8 @@ a.icon {
 }
 .work .work-area .work-image-box {
 	position: relative;
+	height: 270px;
+	border: solid 0.8px #fff;
 }
 .work .work-area .work-image-box img.img-work {
 	width: 100%;
@@ -182,19 +188,23 @@ a.icon {
 	list-style-type: none;
 	margin-right: 10px;
 }
+.team .team-area .team-box ul.team-account li:nth-last-child(1) {
+	margin-right: 0;
+}
 .team .team-area .team-box ul.team-account li a.social-media {
 	display: flex;
     justify-content: center;
     align-items: center;
     border: solid 1px #c6cacc;
-    width: 55px;
-    height: 55px;
 }
 .testimonial {
 	background-color: #53354a;
 }
 .testimonial .testimonial-area {
 	display: flex;
+}
+.testimonial .testimonial-area .testimonial-text p.testimonial-word {
+	font-family: 'Cardo', serif;
 }
 .download {
 	background-color: #ffffff;
@@ -266,7 +276,7 @@ a.icon {
 	}
 	.btn {
 	    padding: 20px 45px;
-	    font-size: 1em;
+	    font-size: 0.75em;
 	}
 	a.icon {
 		display: block;
@@ -296,10 +306,6 @@ a.icon {
 		display: block;
 		padding: 10px 2px 10px 20px;
 		width: 100%;
-	}
-	.header .header-area .nav-area ul.nav li a {
-		padding-bottom: 5px;
-		border-bottom: solid 2px #ffffff;
 	}
 	.banner .banner-area {
 		padding: 100px 0;
@@ -331,9 +337,7 @@ a.icon {
 		flex-direction: column;
 	}
 	.work .work-area .work-image-box {
-		position: relative;
 		width: 100%;
-		height: 360px;
 	}
 	.team .team-area {
 		flex-direction: column;
@@ -346,8 +350,8 @@ a.icon {
 		padding-bottom: 30px;
 	}
 	.team .team-area .team-box img.img-team {
-		width: 270px;
-		height: 270px;
+		width: 100%;
+		height: auto;
 		margin: 0 auto 25px auto;
 	}
 	.team .team-area .team-box p.team-name {
@@ -364,6 +368,13 @@ a.icon {
 	    font-size: 1em;
 	    text-align: justify;
 	    margin-bottom: 20px;
+	}
+	.team .team-area .team-box ul.team-account {
+		justify-content: center;
+	}
+	.team .team-area .team-box ul.team-account li a.social-media {
+		width: 45px;
+		height: 45px;
 	}
 	.testimonial .testimonial-area {
 		flex-direction: column;
@@ -436,9 +447,7 @@ a.icon {
 	    flex-wrap: wrap;
 	}
 	.work .work-area .work-image-box {
-	    position: relative;
 	    width: 50%;
-	    height: 360px;
 	}
 	.team .team-area {
 	    flex-direction: row;
@@ -450,6 +459,9 @@ a.icon {
 	    padding-left: 15px;
 	    padding-right: 15px;
 	    padding-bottom: 30px;
+	}
+	.team .team-area .team-box ul.team-account {
+		justify-content: flex-start;
 	}
 	.testimonial .testimonial-area .testimonial-text {
 		padding: 100px 80px;
@@ -483,7 +495,7 @@ a.icon {
 		margin-right: -15px;
 	}
 	.header .header-area {
-	    padding: 38px 0;
+	    padding: 30px 0;
 	}
 	.header .header-area .logo-area img {
 		width: auto;
@@ -533,7 +545,6 @@ a.icon {
 	}
 	.work .work-area .work-image-box {
 	    width: 25%;
-	    height: 360px;
 	}
 	.team .team-area {
 	    flex-direction: row;
@@ -550,6 +561,10 @@ a.icon {
 	    width: 100%;
 	    height: auto;
 	    margin: 0 auto 25px auto;
+	}
+	.team .team-area .team-box ul.team-account li a.social-media {
+		width: 55px;
+		height: 55px;
 	}
 	.testimonial .testimonial-area {
 		flex-direction: row;
