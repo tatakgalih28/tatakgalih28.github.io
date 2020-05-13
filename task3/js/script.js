@@ -1,5 +1,5 @@
-$('#loader').delay(5000).hide(0);
-$('#content').delay(5000).show(0);
+$('#loader').delay(1500).hide(0);
+$('#content').delay(1500).show(0);
 
 $(document).ready(function() {
   $(".icon").click(function() {
