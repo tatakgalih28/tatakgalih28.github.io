@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Color HEX</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #000000;
+            width: 100%;
+        }
+        #wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50vh;
+            flex-wrap: wrap;
+        }
+        #wrapper p {
+            color: #ffffff;
+            font-size: 2em;
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        #wrapper button {
+            padding: 10px 20px;
+            font-size: 1.15em;
+            background: none;
+            border: solid 1px #ffffff;
+            color: #ffffff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <p>Selected Color : <span id="selectedColor"></span></p>
+        <button onclick="changeBackgroud();">CLICK ME!!</button>
+    </div>
+    <script>
+        var hexColor = ['0', '2', '3', '4', '5', '6', 'A', 'B', 'C', 'D', 'E', 'F'];
+        function changeBackgroud() {
+            var colorPick = '#';
+            var body = document.querySelector('body');
+            for (let i = 0; i < 6; i++) {
+                var index = Math.floor(Math.random() * hexColor.length);
+                colorPick += hexColor[index];
+            }
+            body.style.backgroundColor = colorPick;
+            document.getElementById("selectedColor").innerHTML = colorPick;
+        }
+    </script>
+</body>
+</html>

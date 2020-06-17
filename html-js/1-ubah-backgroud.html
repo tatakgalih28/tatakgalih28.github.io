@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Backgroud Color</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: blueviolet;
+            width: 100%;
+        }
+        #wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50vh;
+        }
+        #wrapper button {
+            padding: 10px 20px;
+            font-size: 1.15em;
+            background: none;
+            border: solid 1px #ffffff;
+            color: #ffffff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <button onclick="changeBackgroud();">CLICK ME!!</button>
+    </div>
+
+    <script>
+        var colorArray = ['red', 'blue', 'black', 'purple', 'blueviolet', 'green', 'pink', 'yellow'];
+        function changeBackgroud() {
+            var body = document.querySelector('body');
+            var randomColor = Math.floor(Math.random() * colorArray.length);
+            body.style.backgroundColor = colorArray[randomColor];
+        }
+    </script>
+</body>
+</html>
