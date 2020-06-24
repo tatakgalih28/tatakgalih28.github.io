@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Jam</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-image: url(images/bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        #wrapper {
+            padding: 70px 10px;
+            width: 200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+            height: 500px;
+        }
+        .time-container {
+            padding: 20px 10px 10px;
+            width: 200px;
+            text-align: center;
+            color: white;
+            border-radius: 8px;
+            border: solid 2px white;
+            position: relative;
+        }
+        p.seconds {
+            position: absolute;
+            top: 8px;
+            right: 11px;
+        }
+        p.calendar {
+            position: absolute;
+            top: 8px;
+            left: 11px;
+        }
+        .time {
+            font-size: 3.5em;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+        .clock-container {
+            width: 200px;
+            height: 200px;
+            border: solid 2px white;
+            background-color: rgba(255, 255, 255, 0);
+            border-radius: 50%;
+            position: relative;
+        }
+        .clock-container::after {
+            content: "";
+            position: absolute;
+            z-index: 13;
+            background-color: white;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .number {
+            position: absolute;
+            color: white;
+            /* background-color: red; */
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .number1 {transform: rotate(30deg);}
+        .number2 {transform: rotate(60deg);}
+        .number3 {transform: rotate(90deg);}
+        .number4 {transform: rotate(120deg);}
+        .number5 {transform: rotate(150deg);}
+        .number6 {transform: rotate(180deg);}
+        .number7 {transform: rotate(210deg);}
+        .number8 {transform: rotate(240deg);}
+        .number9 {transform: rotate(270deg);}
+        .number10 {transform: rotate(300deg);}
+        .number11 {transform: rotate(330deg);}
+
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom;
+            transform: translate(-50%, -50%);
+        }
+        .hour {
+            height: 40%;
+            z-index: 12;
+            width: 10px;
+            background-color: white;
+            transform: rotate(0deg);
+            border-radius: 5px;
+        }
+        .minute {
+            height: 45%;
+            z-index: 11;
+            width: 5px;
+            background-color: white;
+            transform: rotate(90deg);
+            border-radius: 5px;
+        }
+        .second {
+            height: 49%;
+            z-index: 10;
+            width: 1px;
+            background-color: red;
+            transform: rotate(180deg);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="digital">
+            <div class="time-container">
+                <p class="time"><span class="hours"></span>:<span class="minutes"></span></p>
+                <p class="seconds">5</p>
+                <p class="calendar"></p>
+            </div>
+        </div>
+        <div class="analog">
+            <div class="clock-container">
+                <div class="hand hour"></div>
+                <div class="hand minute"></div>
+                <div class="hand second"></div>
+                <div class="number number1">1</div>
+                <div class="number number2">2</div>
+                <div class="number number3">3</div>
+                <div class="number number4">4</div>
+                <div class="number number5">5</div>
+                <div class="number number6">6</div>
+                <div class="number number7">7</div>
+                <div class="number number8">8</div>
+                <div class="number number9">9</div>
+                <div class="number number10">10</div>
+                <div class="number number11">11</div>
+                <div class="number number12">12</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //Digital
+        const hours = document.querySelector('.hours');
+        const minutes = document.querySelector('.minutes');
+        const seconds = document.querySelector('.seconds');
+        const calendar = document.querySelector('.calendar');
+
+        //Analog
+        const hourHand = document.querySelector('.hour');
+        const hourMinute = document.querySelector('.minute');
+        const hourSecond = document.querySelector('.second');
+        
+        //Day
+        const day = ["SUN","MON","TUES","WED","THURS","FRI","SAT"];
+        function setTime() {
+            const time = new Date();
+            hours.innerHTML = time.getHours();
+            minutes.innerHTML = time.getMinutes();
+            seconds.innerHTML = time.getSeconds();
+            calendar.innerHTML = day[time.getDay()] + '/' + time.getDate() + '/' + time.getMonth() + '/' + time.getFullYear();
+
+            const secondDeg = ((time.getSeconds() / 60) * 360);
+            const minuteDeg = ((time.getMinutes() / 60) * 360);
+            const hourDeg = ((time.getHours() / 12) * 360);
+            hourSecond.style.transform = `rotate(${secondDeg}deg) translate(-50%, 0%)`;
+            hourMinute.style.transform = `rotate(${minuteDeg}deg) translate(-50%, 0%)`;
+            hourHand.style.transform = `rotate(${hourDeg}deg) translate(-50%, 0%)`;
+        }
+        setInterval(setTime, 1000);
+    </script>
+</body>
+</html>
