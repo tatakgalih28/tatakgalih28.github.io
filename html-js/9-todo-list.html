@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        input {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-image: url(images/bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        #wrapper {
+            padding: 70px 5px;
+            width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+            height: 500px;
+        }
+        ul.todoList li {
+            padding-left: 10px;
+            color: #ffffff;
+            font-size: 1.5em;
+            list-style: none;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        ul.todoList li span {
+            display: block;
+            width: 100%;
+        }
+        ul.todoList li span.selesai {
+            text-decoration: line-through;
+        }
+        i.fa {
+            color: #ffffff;
+            font-size: 0;
+            display: inline-block;
+            transition: all 0.5s;
+        }
+        ul.todoList li:hover i.fa {
+            font-size: 1em;
+        }
+        .todo-list {
+            margin-top: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.5em;
+            border: none;
+            outline: none;
+        }
+        input:active {
+            border: none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="todo-container">
+            <div class="todo-input">
+                <input type="text" placeholder="Your Plan">
+            </div>
+            <div class="todo-list">
+                <ul class="todoList">
+                    <li><span>Test</span><i class="fa fa-trash-o"></i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const input = document.querySelector('input');
+        const inputList = document.querySelector('ul.todoList');
+        const hapus = document.querySelectorAll('i');
+        const garisList = document.querySelectorAll('span');
+        input.addEventListener('keydown', function(e){
+            if (e.keyCode === 13) {
+                const newList = document.createElement('li');
+                const icon = document.createElement('i');
+                icon.classList.add('fa', 'fa-trash-o');
+                let newlistText = document.createTextNode(this.value);
+                newList.appendChild(newlistText);
+                newList.appendChild(icon);
+                inputList.appendChild(newList);
+                this.value = '';
+            }
+        });
+        function Test(e) {
+            console.log(e.target);
+        }
+        function coretRencana(element) {
+            element.target.classList.toggle('selesai');
+        }
+        hapus.forEach(i => i.addEventListener('click', Test));
+        garisList.forEach(li => li.addEventListener('click', coretRencana));
+    </script>
+</body>
+</html>
