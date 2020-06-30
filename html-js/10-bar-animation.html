@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Animation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 0 98px;
+        }
+
+        .main-visual-area {
+            background-image: url(./images/slider5.jpg);
+            padding: 200px 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #ffffff;
+        }
+
+        .main-visual-area h1 {
+            margin-bottom: 10px;
+        }
+
+        .about-area,
+        .article-area {
+            background-color: #092532;
+            color: #ffffff;
+            padding: 80px 0;
+        }
+
+        .about-area p {
+            text-align: center;
+        }
+
+        .bar-area {
+            background-color: #f4f6ff;
+            color: #092532;
+            padding: 50px 0;
+        }
+
+        p.bar-title {
+            margin-bottom: 10px;
+        }
+
+        .bar-container {
+            height: 8px;
+            background-color: #092532;
+            border-radius: 8px;
+        }
+
+        .bar-value {
+            border-radius: 8px;
+            background-color: #ffcb74;
+            height: 100%;
+            transition: ease-out 2s;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        .bar-area.active .bar-value {
+            transform: scaleX(1);
+        }
+
+        .bar-box {
+            margin-bottom: 50px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="main-visual-area">
+            <div class="container">
+                <h1>Bar Animation</h1>
+                <p id="descVisual">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, consequatur soluta nemo ut sequi ad.
+                </p>
+            </div>
+        </div>
+        <div class="about-area">
+            <div class="container">
+                <h2>About</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil adipisci eaque laborum impedit!
+                    Reprehenderit ipsam facere nam doloremque dignissimos ad.</p>
+            </div>
+        </div>
+        <div class="bar-area" id="barBox">
+            <div class="container">
+                <h2>Skill</h2>
+                <div class="bar-box">
+                    <p class="bar-title">UI/IX DESIGN</p>
+                    <div class="bar-container">
+                        <div class="bar-value" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="bar-box">
+                    <p class="bar-title">WEB DEVELOPMENT</p>
+                    <div class="bar-container">
+                        <div class="bar-value" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="bar-box">
+                    <p class="bar-title">MARKETING</p>
+                    <div class="bar-container">
+                        <div class="bar-value" style="width: 65%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article-area">
+            <div class="container">
+                <h2>Lorem ipsum dolor sit amet.</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, ratione maxime iure numquam ab
+                    iusto doloremque dolorum non blanditiis. Voluptas commodi quaerat, fugit ipsam saepe maxime, porro
+                    facere aliquam aut illum voluptates, est atque. Illo, quisquam consectetur dolorum officia itaque
+                    magnam culpa nam animi repellendus quos non dolore dicta porro! Iure consequuntur porro vitae
+                    expedita harum quos reprehenderit iste vel sequi at placeat cumque sit rem quas, sint in ea cum.
+                    Distinctio commodi facilis cum, doloremque nemo at modi eos cumque mollitia iusto similique dolor,
+                    nulla, qui quo odio sint alias itaque laboriosam recusandae corporis iure. Officia maxime nobis
+                    laborum.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>Learning Javascript and CSS<br>by TATAK</p>
+        </div>
+    </footer>
+    <script>
+        const barBox = document.getElementById('barBox');
+        const barValue = document.getElementsByClassName('bar-value');
+
+        function barAnimate() {
+            console.log(window.scrollY);
+
+            if (window.scrollY >= 400) {
+                barBox.classList.add('active');
+            }
+        }
+        window.addEventListener('scroll', barAnimate);
+    </script>
+</body>
+
+</html>
