@@ -3,115 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TODO List App</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        input {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-        body {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            background-image: url(images/bg.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-        #wrapper {
-            padding: 70px 5px;
-            width: 500px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: stretch;
-            height: 500px;
-        }
-        ul.todoList li {
-            padding-left: 10px;
-            color: #ffffff;
-            font-size: 1.5em;
-            list-style: none;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-        ul.todoList li span {
-            display: block;
-            width: 100%;
-        }
-        ul.todoList li span.selesai {
-            text-decoration: line-through;
-        }
-        i.fa {
-            color: #ffffff;
-            font-size: 0;
-            display: inline-block;
-            transition: all 0.5s;
-        }
-        ul.todoList li:hover i.fa {
-            font-size: 1em;
-        }
-        .todo-list {
-            margin-top: 20px;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            font-size: 1.5em;
-            border: none;
-            outline: none;
-        }
-        input:active {
-            border: none;
-            outline: none;
-        }
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Poppins;
+    background-color: #30475e;
+}
+.container {
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 50px 0 0;
+}
+.todo-list-container {
+    width: 500px;
+    margin: 0 auto;
+}
+.header-container {
+    height: 250px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-size: cover;
+    background-image: url(./images/bg.jpg);
+    background-repeat: no-repeat;
+    padding: 0 10px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #ffffff;
+}
+.header-container h2 {
+    font-weight: 500;
+    font-size: 2.5em;
+}
+.header-container p {
+    font-size: 1.5em;
+}
+.content-container {
+    background-color: #ffffff;
+}
+button {
+    cursor: pointer;
+}
+button#addButton,button.removeButton {
+    color: #30475e;
+    border: solid 1px #30475e;
+    display: flex;
+    width: 30px;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border-radius: 2px;
+}
+button.removeButton {
+    color: #d63447;
+    height: 30px;
+    border: solid 1px #d63447;
+}
+i.fa {
+    font-size: 1.25em;
+}
+.content-container {
+    padding: 10px;
+}
+.input-todo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+input#inputTodo {
+    width: 440px;
+    padding: 5px 5px 5px 10px;
+    font-size: 1em;
+    outline: none;
+    border: solid #000000 1px;
+    border-radius: 2px;
+}
+ul.list-container {
+    list-style: none;
+}
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.list-item li {
+    width: 440px;
+    padding: 10px;
+    cursor: pointer;
+}
+.list-item li.complete {
+    text-decoration: line-through;
+}
     </style>
 </head>
 <body>
-    <div id="wrapper">
-        <div class="todo-container">
-            <div class="todo-input">
-                <input type="text" placeholder="Your Plan">
+    <div class="container">
+        <div class="todo-list-container">
+            <div class="header-container">
+                <h2 id="dayText"></h2>
+                <p id="dateText"></p>
             </div>
-            <div class="todo-list">
-                <ul class="todoList">
-                    <li><span>Test</span><i class="fa fa-trash-o"></i></li>
-                </ul>
+            <div class="content-container">
+                <div class="input-todo">
+                    <input type="text" placeholder="Your Plan" id="inputTodo">
+                    <button id="addButton"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                </div>
+                <div class="list-todo">
+                    <ul class="list-container">
+                        
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-
     <script>
-        const input = document.querySelector('input');
-        const inputList = document.querySelector('ul.todoList');
-        const hapus = document.querySelectorAll('i');
-        const garisList = document.querySelectorAll('span');
-        input.addEventListener('keydown', function(e){
-            if (e.keyCode === 13) {
-                const newList = document.createElement('li');
-                const icon = document.createElement('i');
-                icon.classList.add('fa', 'fa-trash-o');
-                let newlistText = document.createTextNode(this.value);
-                newList.appendChild(newlistText);
-                newList.appendChild(icon);
-                inputList.appendChild(newList);
-                this.value = '';
-            }
-        });
-        function Test(e) {
-            console.log(e.target);
-        }
-        function coretRencana(element) {
-            element.target.classList.toggle('selesai');
-        }
-        hapus.forEach(i => i.addEventListener('click', Test));
-        garisList.forEach(li => li.addEventListener('click', coretRencana));
+        // Set Time Function
+const dayText = document.querySelector('#dayText');
+const dateText = document.querySelector('#dateText');
+const dayArray = ["SUN","MON","TUES","WED","THURS","FRI","SAT"];
+const monthArray = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+function setTime() {
+    const timeNow = new Date();
+    dayText.innerHTML = dayArray[timeNow.getDay()];
+    const monthName = monthArray[timeNow.getMonth()];
+    dateText.innerHTML = `${timeNow.getDate()} ${monthName} ${timeNow.getFullYear()}`;
+}
+setInterval(setTime, 1000);
+
+//Todo List Function
+//Variabel Initiation
+const inputTodo = document.querySelector('input#inputTodo');
+const addButton = document.querySelector('button#addButton');
+
+inputTodo.addEventListener('keydown', function(e) {
+    if (e.keyCode === 13) {
+     addTodo();
+    }
+});
+
+addButton.addEventListener('click', addTodo);
+
+function addTodo() {
+    const ul = document.querySelector('ul.list-container');
+    const listItem = document.createElement('div');
+    listItem.classList.add('list-item');
+    ul.appendChild(listItem);
+
+    const li = document.createElement('li');
+    li.addEventListener('click', completeTodo);
+    li.innerHTML = `${inputTodo.value}`;
+
+    const removeButton = document.createElement('button');
+    removeButton.classList.add('removeButton');
+    removeButton.addEventListener('click', function(){
+        listItem.remove();
+    });
+    removeButton.innerHTML = `<i class="fa fa-trash" aria-hidden="true"></i>`;
+
+    listItem.appendChild(li);
+    listItem.appendChild(removeButton);
+
+    inputTodo.value = '';
+}
+
+//Complete TODO
+function completeTodo() {
+    this.classList.toggle('complete');
+}
     </script>
 </body>
 </html>
