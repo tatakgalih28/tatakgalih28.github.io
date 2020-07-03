@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Hover Animation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #222831;
+        }
+        .container {
+            width: 200px;
+            margin: 0 auto;
+            padding: 30px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            padding: 8px 15px;
+            font-size: 1.25em;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+            background-color: #eeeeee;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .btn-border::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: solid 2px #eeeeee;
+            transition: 0.1s ease-in;
+        }
+        .btn-border:hover::after {
+            top: -6px;
+            bottom: -6px;
+            left: -6px;
+            right: -6px;
+        }
+        .btn-underline::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: 0.2s ease-in;
+            transform-origin: center;
+            transform: scaleX(0);
+        }
+        .btn-underline:hover::after {
+            border-bottom: solid 6px #00adb5;
+            transform: scaleX(1);
+        }
+        .btn-slide::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: #00adb5;
+            transform: scaleX(0);
+            z-index: -1;
+            transition: 0.3s ease-in;
+        }
+        .btn-slide-left::after {
+            transform-origin: left;
+        }
+        .btn-slide-right::after {
+            transform-origin: right;
+        }
+        .btn-slide-center::after {
+            transform-origin: center;
+        }
+        .btn-slide {
+            z-index: 1;
+        }
+        .btn-slide:hover::after {
+            transform: scaleX(1);
+        }
+        .btn-slide:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn btn-border">HOVER ME</button>
+        <button class="btn btn-underline">HOVER ME</button>
+        <button class="btn btn-slide btn-slide-left">HOVER ME</button>
+        <button class="btn btn-slide btn-slide-right">HOVER ME</button>
+        <button class="btn btn-slide btn-slide-center">HOVER ME</button>
+    </div>
+</body>
+</html>
