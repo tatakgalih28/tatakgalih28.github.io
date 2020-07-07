@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Animation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        :root {
+            --black: #2d4059;
+            --red: #ea5455;
+            --orange: #f07b3f;
+            --yellow: #ffd460;
+            --white: #f4f4f4;
+        }
+        body {
+            background-color: var(--black);
+        }
+        a {
+            text-decoration: none;
+        }
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .bg-white {
+            background-color: var(--white);
+        }
+        .bg-dark {
+            background-color: var(--black);
+        }
+        .bg-image {
+            background-image: url(./images/kellen-riggin-U-Xa6K3Rfxk-unsplash.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #timeline {
+            padding: 50px 0;
+        }
+        .header-area {
+            display: flex;
+            padding: 10px 0;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--black);
+        }
+        .header-area a {
+            color: var(--black);
+        }
+        .header-area nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        .main-area {
+            height: 500px;
+            padding: 120px 0 20px;
+            color: var(--white);
+        }
+        .timeline {
+            position: relative;
+            padding: 10px 0;
+        }
+        .timeline::before {
+            content: '';
+            width: 5px;
+            background-color: var(--white);
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            height: 100%;
+            top: 0;
+            transform: translateX(-2px);
+        }
+        .timeline ul li.timeline-list {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            opacity: 0;
+            transition: all 10s;
+        }
+        .timeline ul li.timeline-list.active {
+            opacity: 1;
+        }
+        .timeline ul li.timeline-list:nth-child(odd) {
+            flex-direction: row;
+        }
+        .timeline ul li.timeline-list:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .timeline ul li.timeline-list .dot-timeline {
+            width: 30px;
+            height: 30px;
+            background-color: var(--red);
+            z-index: 999;
+            border-radius: 50%;
+            border: solid 2px var(--white);
+        }
+        .timeline ul li.timeline-list .content-timeline,
+        .timeline ul li.timeline-list .date-timeline {
+            width: 50%;
+            padding: 0 20px;
+            transition: all 10s;
+        }
+        .timeline ul li.timeline-list .date-timeline {
+            display: flex;
+        }
+        .timeline ul li.timeline-list:nth-child(odd) .content-timeline {
+            padding-left: 0;
+            transform: translateX(-35px);
+        }
+        .timeline ul li.timeline-list:nth-child(odd) .date-timeline {
+            padding-right: 0;
+            transform: translateX(35px);
+            justify-content: flex-start;
+        }
+        .timeline ul li.timeline-list:nth-child(even) .content-timeline {
+            padding-right: 0;
+            transform: translateX(35px);
+        }
+        .timeline ul li.timeline-list:nth-child(even) .date-timeline {
+            padding-left: 0;
+            transform: translateX(-35px);
+            justify-content: flex-end;
+        }
+        .timeline ul li.timeline-list.active:nth-child(odd) .content-timeline {
+            transform: translateX(0);
+        }
+        .timeline ul li.timeline-list.active:nth-child(odd) .date-timeline {
+            transform: translateX(0);
+        }
+        .timeline ul li.timeline-list.active:nth-child(even) .content-timeline {
+            transform: translateX(0);
+        }
+        .timeline ul li.timeline-list.active:nth-child(even) .date-timeline {
+            transform: translateX(0);
+        }
+        .timeline ul li.timeline-list .content-timeline h3 {
+            background-color: var(--white);
+            text-align: center;
+            padding: 5px 0;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .timeline ul li.timeline-list .content-timeline p {
+            padding: 8px;
+            background-color: var(--red);
+            color: var(--white);
+        }
+        .timeline ul li.timeline-list .date-timeline p {
+            background-color: var(--red);
+            width: 150px;
+            color: var(--white);
+            padding: 5px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .white {
+            color: var(--white);
+        }
+        h2.title-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .footer-area {
+            text-align: center;
+            padding: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-white">
+        <div class="container">
+            <div class="header-area">
+                <a href="#"><h1>byTatak</h1></a>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Timeline</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="bg-image">
+        <div class="container">
+            <div class="main-area">
+                <h2>Timeline Animation on Scroll</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero deleniti vel culpa assumenda veniam. Fugit amet minima quasi inventore corporis ullam, eaque vel dolores architecto.</p>
+            </div>
+        </div>
+    </section>
+    <section id="timeline">
+        <div class="container">
+            <h2 class="title-section white">Timeline</h2>
+            <div class="timeline">
+                <ul>
+                    <li class="timeline-list">
+                        <div class="content-timeline">
+                            <h3>Lorem ipsum dolor sit amet.</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae fugiat illo voluptates, quia adipisci eum? Molestias deleniti neque veniam aut.</p>
+                        </div>
+                        <div class="dot-timeline"></div>
+                        <div class="date-timeline">
+                            <p>2020/07/07</p>
+                        </div>
+                    </li>
+                    <li class="timeline-list">
+                        <div class="content-timeline">
+                            <h3>Lorem ipsum dolor sit amet.</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae fugiat illo voluptates, quia adipisci eum? Molestias deleniti neque veniam aut.</p>
+                        </div>
+                        <div class="dot-timeline"></div>
+                        <div class="date-timeline">
+                            <p>2020/07/07</p>
+                        </div>
+                    </li>
+                    <li class="timeline-list">
+                        <div class="content-timeline">
+                            <h3>Lorem ipsum dolor sit amet.</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae fugiat illo voluptates, quia adipisci eum? Molestias deleniti neque veniam aut.</p>
+                        </div>
+                        <div class="dot-timeline"></div>
+                        <div class="date-timeline">
+                            <p>2020/07/07</p>
+                        </div>
+                    </li>
+                    <li class="timeline-list">
+                        <div class="content-timeline">
+                            <h3>Lorem ipsum dolor sit amet.</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae fugiat illo voluptates, quia adipisci eum? Molestias deleniti neque veniam aut.</p>
+                        </div>
+                        <div class="dot-timeline"></div>
+                        <div class="date-timeline">
+                            <p>2020/07/07</p>
+                        </div>
+                    </li>
+                    <li class="timeline-list">
+                        <div class="content-timeline">
+                            <h3>Lorem ipsum dolor sit amet.</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae fugiat illo voluptates, quia adipisci eum? Molestias deleniti neque veniam aut.</p>
+                        </div>
+                        <div class="dot-timeline"></div>
+                        <div class="date-timeline">
+                            <p>2020/07/07</p>
+                        </div>
+                    </li>
+                    <li class="timeline-list">
+                        <div class="content-timeline">
+                            <h3>Lorem ipsum dolor sit amet.</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae fugiat illo voluptates, quia adipisci eum? Molestias deleniti neque veniam aut.</p>
+                        </div>
+                        <div class="dot-timeline"></div>
+                        <div class="date-timeline">
+                            <p>2020/07/07</p>
+                        </div>
+                    </li>
+                    <li class="timeline-list">
+                        <div class="content-timeline">
+                            <h3>Lorem ipsum dolor sit amet.</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae fugiat illo voluptates, quia adipisci eum? Molestias deleniti neque veniam aut.</p>
+                        </div>
+                        <div class="dot-timeline"></div>
+                        <div class="date-timeline">
+                            <p>2020/07/07</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-white">
+        <div class="container">
+            <div class="footer-area">
+                <p>by Tatak Galih Prasetyo</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function timelineScroll() {
+            const testText = document.querySelectorAll('.timeline-list');
+            const windowHeight = window.scrollY;
+            for (let index = 0; index < testText.length; index++) {
+                const testPosition = testText[index].offsetTop;
+                console.log(testPosition ,windowHeight);
+                if (windowHeight >= testPosition) {
+                    testText[index].classList.add('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', timelineScroll);
+    </script>
+</body>
+</html>
