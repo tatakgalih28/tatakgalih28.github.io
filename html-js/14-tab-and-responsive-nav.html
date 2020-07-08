@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trial Error Tabs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --dark: #222F3E;
+            --green: #1DF7A0;
+            --orange: #ff7749;
+            --white: #ffffff;
+        }
+
+        .bg-dark {
+            background-color: var(--dark);
+        }
+
+        .bg-green {
+            background-color: var(--green);
+        }
+
+        .bg-orange {
+            background-color: var(--orange);
+        }
+
+        .bg-picture {
+            background-image: url(./images/kellen-riggin-U-Xa6K3Rfxk-unsplash.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            padding: 0 10px;
+            margin: 0 auto;
+        }
+
+        .header-area {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            align-items: center;
+            position: relative;
+        }
+
+        .header-area a {
+            text-decoration: none;
+            color: var(--green);
+        }
+
+        nav .toggle-menu {
+            display: flex;
+            width: 40px;
+            height: 35px;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        nav .toggle-menu span {
+            height: 6px;
+            border-radius: 10px;
+            background-color: var(--green);
+            transform-origin: left;
+            transition: all 0.5s;
+        }
+
+        nav .toggle-menu.active span.one {
+            transform: rotate(35deg) translateX(5.5px);
+        }
+
+        nav .toggle-menu.active span.two {
+            transform: scale(0);
+        }
+
+        nav .toggle-menu.active span.three {
+            transform: rotate(-35deg) translateX(5.5px);
+        }
+
+        nav ul.nav-link {
+            opacity: 0.9;
+            list-style: none;
+            padding: 20px 10px 20px 20px;
+            background-color: var(--dark);
+            position: absolute;
+            color: var(--white);
+            top: 68px;
+            right: -10px;
+            width: 300px;
+            transition: all 0.5s;
+            transform-origin: right;
+            transform: scaleX(0);
+        }
+
+        nav ul.nav-link li {
+            margin-bottom: 10px;
+        }
+
+        nav ul.nav-link li a {
+            color: var(--green);
+            text-decoration: none;
+            font-size: 1.25em;
+        }
+
+        nav ul.nav-link li a:hover {
+            border-bottom: solid 2px var(--green);
+        }
+
+        nav ul.nav-link li:last-child {
+            margin-bottom: 0;
+        }
+
+        nav ul.nav-link.active {
+            transform: scaleX(1);
+        }
+
+        .main-visual-area {
+            height: 350px;
+            padding: 70px 0 0;
+            color: var(--white);
+        }
+        .row-tab {
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+        }
+        .row-tab img {
+            width: 100%;
+            height: auto;
+            padding: 10px;
+        }
+        .tab-area {
+            padding: 10px;
+        }
+
+        .tab-button-area {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        a.btn-tab {
+            padding: 5px 8px;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1.25em;
+            cursor: pointer;
+            transform-origin: left;
+            transition: all 0.2s;
+        }
+
+        a.btn-tab:hover {
+            border-bottom: solid 2px var(--dark);
+        }
+
+        a.btn-tab.active {
+            border-bottom: solid 2px var(--dark);
+        }
+
+        .tab-content {
+            display: none;
+            color: var(--dark);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+        .footer-area {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--white);
+        }
+        @media screen and (min-width: 320px) {}
+
+        @media screen and (min-width: 768px) {
+            nav ul.nav-link {
+                width: 500px;
+            }
+            .main-visual-area {
+                padding: 200px 0 0 0;
+                height: 680px;
+            }
+            .row-tab {
+                flex-direction: row;
+            }
+            .row-tab img {
+                width: 50%;
+                height: auto;
+            }
+        }
+
+        @media screen and (min-width: 1080px) {
+            .container {
+                max-width: 1200px;
+            }
+            nav ul.nav-link {
+                opacity: 1;
+                background: none;
+                position: relative;
+                transform: scaleX(1);
+                top: 0;
+                width: 100%;
+            }
+            nav ul.nav-link li {
+                display: inline;
+                margin-left: 20px;
+            }
+            nav .toggle-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-dark">
+        <div class="container">
+            <div class="header-area">
+                <a href="#">
+                    <h1>byTatak</h1>
+                </a>
+                <nav>
+                    <div class="toggle-menu">
+                        <span class="one"></span>
+                        <span class="two"></span>
+                        <span class="three"></span>
+                    </div>
+                    <ul class="nav-link">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Download</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-picture">
+        <div class="container">
+            <div class="main-visual-area">
+                <h2>Make Table and Toggle Responsive Navbar</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque nesciunt numquam optio officia
+                    corrupti reprehenderit.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-green">
+        <div class="container">
+            <div class="row-tab">
+                <img src="images/bg.jpg" alt="">
+                <div class="tab-area">
+                    <div class="tab-button-area">
+                        <a class="btn-tab active" data-target-tab="tab1">Tab 1</a>
+                        <a class="btn-tab" data-target-tab="tab2">Tab 2</a>
+                        <a class="btn-tab" data-target-tab="tab3">Tab 3</a>
+                        <a class="btn-tab" data-target-tab="tab4">Tab 4</a>
+                    </div>
+                    <div class="tab-content-area">
+                        <div class="tab-content active" data-tab="tab1">
+                            <h3>Tab 1</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis, labore.</p>
+                        </div>
+                        <div class="tab-content" data-tab="tab2">
+                            <h3>Tab 2</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est cupiditate eum quasi aperiam.
+                                Quaerat, ex?</p>
+                        </div>
+                        <div class="tab-content" data-tab="tab3">
+                            <h3>Tab 3</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor, repudiandae quisquam.</p>
+                        </div>
+                        <div class="tab-content" data-tab="tab4">
+                            <h3>Tab 4</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur exercitationem cumque, vero id pariatur cupiditate libero magnam aut voluptates?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark">
+        <div class="container">
+            <div class="footer-area">
+                <p>by Tatak Galih Prasetyo</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const toggleMenu = document.querySelector('.toggle-menu');
+        toggleMenu.addEventListener('click', function () {
+            const navElement = document.querySelector('ul.nav-link');
+            this.classList.toggle('active');
+            navElement.classList.toggle('active');
+        });
+
+        const tabButton = document.querySelectorAll('[data-target-tab]');
+        tabButton.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const tabContent = document.querySelectorAll('.tab-content');
+                for (let i = 0; i < tabButton.length; i++) {
+                    tabButton[i].classList.remove('active');
+                }
+                for (let j = 0; j < tabContent.length; j++) {
+                    if (tabContent[j].dataset.tab === this.dataset.targetTab) {
+                        tabContent[j].classList.add('active');
+                    } else {
+                        tabContent[j].classList.remove('active');
+                    }
+                }
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
