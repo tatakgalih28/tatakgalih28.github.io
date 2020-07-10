@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Test</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    }
+    .container {
+      padding: 0 20px;
+      margin: 0 auto;
+    }
+    header, section, footer {
+      background-color: #FFFFFF;
+    }
+    header , section{
+      border-bottom: #5F5CCE solid 1px;
+    }
+    body.dark header, body.dark section, body.dark footer {
+      background-color: #3A4161;
+    }
+    .header-area {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    body.dark .header-area, body.dark .article-area, body.dark .footer-area {
+      color: #FFFFFF;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 28px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked+.slider {
+      background-color: #5F5CCE;
+    }
+
+    input:focus+.slider {
+      box-shadow: 0 0 1px #5F5CCE;
+    }
+
+    input:checked+.slider:before {
+      -webkit-transform: translateX(20px);
+      -ms-transform: translateX(20px);
+      transform: translateX(20px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+    .article-area {
+      padding: 25px 0 15px;
+    }
+    .article-area h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .article-area p {
+      margin-bottom: 15px;
+    }
+    .footer-area {
+      padding: 10px 0 15px;
+      text-align: center;
+    }
+    @media screen and (min-width: 768px) {
+      .container {
+        padding: 0 30px;
+      }
+    }
+
+    @media screen and (min-width: 1080px) {
+      .container {
+        max-width: 1200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="header-area">
+        <h1>by Tatak</h1>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="article-area">
+        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, distinctio excepturi quibusdam earum dolor error modi aut pariatur eius voluptates animi minima eos temporibus dignissimos nemo soluta optio voluptas iure! Quod, dignissimos? Blanditiis cumque deleniti explicabo. Id veritatis accusantium dignissimos. Tenetur ipsum saepe rem tempore labore unde eos a maiores?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae aliquid incidunt, eaque nulla, aspernatur, dolor harum accusantium mollitia dicta eveniet facere ullam. Delectus optio, quidem facilis accusantium reiciendis nihil nesciunt magni cupiditate, aperiam sunt mollitia, rerum quam odit! Ducimus et neque consequuntur debitis tempore ab autem perspiciatis optio eos, libero vero nostrum impedit in! Excepturi odit quaerat ullam. Placeat, veritatis quidem. Est aspernatur molestiae aut praesentium.</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum neque dolore id deserunt mollitia consequuntur, vero nobis est sequi maxime at accusantium, voluptatem odio quisquam voluptas totam nam exercitationem qui nesciunt minima commodi incidunt. Cupiditate reiciendis sit sequi deserunt aperiam magnam voluptatum minima, nulla ipsam doloribus dignissimos modi sint nihil provident laborum ut, quis inventore ad ea illum numquam. Mollitia animi minima voluptatibus.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-area">
+        <p>by Tatak Galih Prasetyo</p>
+        <p>reference from w3schools.com/</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const darkModeButton = document.querySelector('input[type="checkbox"]');
+
+    function switchMode(e) {
+      const bodyElement = document.body;
+      bodyElement.classList.toggle('dark');
+    }
+
+    darkModeButton.addEventListener('change', switchMode);
+  </script>
+</body>
+
+</html>
