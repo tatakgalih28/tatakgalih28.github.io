@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up and Sign In Validation</title>
+  <style>
+    :root {
+      --black-color: #222629;
+      --white-color: #FFFFFF;
+      --green-color: #86C232;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    }
+    body {
+      background-color: var(--black-color);
+    }
+    .container-form {
+      max-width: 450px;
+      background-color: var(--white-color);
+      margin: 15vh auto 0;
+      border-radius: 8px;
+      padding: 0 0 10px;
+    }
+    .form-tab-button ul {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+    }
+    .form-tab-button ul li {
+      width: 50%;
+    }
+    .form-tab-button ul li button {
+      padding: 10px 0;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      border-bottom: solid 2px var(--green-color);
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-size: 1.15em;
+      outline: none;
+    }
+    .form-tab-button ul li button:hover, .form-tab-button ul li button.active {
+      background-color: var(--green-color);
+      color: var(--white-color);
+    }
+    .form-tab-button ul li:first-child button {
+      border-top-left-radius: 8px;
+    }
+    .form-tab-button ul li:last-child button {
+      border-top-right-radius: 8px;
+    }
+    .sign-in-container ,.sign-up-container {
+      padding: 20px 10px 0;
+      text-align: center;
+      display: none;
+    }
+    .sign-in-container.active, .sign-up-container.active {
+      display: block;
+    }
+    .sign-in-container input ,.sign-up-container input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      font-size: 1.05em;
+      outline: none;
+      border: solid 1.5px var(--green-color);
+    }
+    .sign-in-container button ,.sign-up-container button {
+      display: inline-block;
+      padding: 8px 0;
+      text-align: center;
+      width: 50%;
+      font-size: 1.05em;
+      border: none;
+      outline: none;
+      background-color: var(--green-color);
+      color: var(--white-color);
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .sign-up-container p {
+      color: red;
+    }
+    .sign-up-container p.valid {
+      color: var(--black-color);
+    }
+  </style>
+</head>
+<body>
+  <div class="container-form">
+    <div class="form-tab-content">
+      <div class="sign-up-container active" data-tab="sign-up">
+        <form action="#">
+          <input type="password" placeholder="Your Password">
+        </form>
+        <p id="upper_lower_case">Uppercase dan Lowercase</p>
+        <p id="length">Panjang Minimal 8 Karakter</p>
+        <p id="number">Harus mengandung angka</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    //Form Validation
+    const inputPassword = document.querySelectorAll('input[type="password"]');
+    const lengthValue = document.querySelector('#length');
+    const numberValue = document.querySelector('#number');
+    const upperlowerValue = document.querySelector('#upper_lower_case');
+    inputPassword.forEach(password => {
+      password.addEventListener('input', function() {
+        const upperCase = /[A-Z]/g;
+        const lowerCase = /[a-z]/g;
+        if (this.value.match(upperCase) && this.value.match(lowerCase)) {
+          upperlowerValue.classList.add('valid');
+        }
+        else {
+          upperlowerValue.classList.remove('valid');
+        }
+        if (this.value.length >=8) {
+          lengthValue.classList.add('valid');
+        }
+        else {
+          lengthValue.classList.remove('valid');
+        }
+        const numberValid = /[0-9]/g;
+        if (this.value.match(numberValid)) {
+          numberValue.classList.add('valid');
+        } else {
+          numberValue.classList.remove('valid');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
