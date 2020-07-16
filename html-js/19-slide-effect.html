@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #1b262c;
+    }
+    .carousel {
+      display: flex;
+      margin: 2rem auto;
+      overflow: hidden;
+      width: 800px;
+      position: relative;
+    }
+    .carousel__images {
+      display: flex;
+      align-items: center;
+    }
+    button {
+      z-index: 99;
+    }
+    img {
+      transition: all 0.5s;
+      width: 800px;
+    }
+    button {
+      position: absolute;
+      display: inline-block;
+      z-index: 2;
+      bottom: 10px;
+      background-color: #bbe1fa;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    button#prevBtn {
+      left: 10px;
+    }
+    button#nextBtn {
+      left: 70px;
+    }
+    svg {
+      stroke: #0f4c75;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel">
+    <div class="carousel__images">
+      <img src="https://via.placeholder.com/800x300.jpg?text=Slide+1" alt="">
+      <img src="https://via.placeholder.com/800x300.jpg?text=Slide+2" alt="">
+      <img src="https://via.placeholder.com/800x300.jpg?text=Slide+3" alt="">
+      <img src="https://via.placeholder.com/800x300.jpg?text=Slide+4" alt="">
+      <img src="https://via.placeholder.com/800x300.jpg?text=Slide+5" alt="">
+    </div>
+    <button id="prevBtn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M12 5l-7 7 7 7"/></svg></button>
+    <button id="nextBtn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></button>
+  </div>
+  <script>
+    const imageSlide = document.querySelectorAll('img');
+    const widthTranslate = document.querySelector('img').offsetWidth;
+    console.log(widthTranslate);
+    const slideBtn = document.querySelectorAll('button');
+    let translateWidth = 0;
+
+    for (let i = 0; i < slideBtn.length; i++) {
+      slideBtn[i].addEventListener('click', function(e) {
+        if (e.target.id === 'nextBtn') {
+          translateWidth-=widthTranslate;
+          if (translateWidth <= (imageSlide.length) * -widthTranslate) {
+            translateWidth = 0;
+          }
+          for (let j = 0; j < imageSlide.length; j++) {
+            imageSlide[j].style.transform = `translateX(${translateWidth}px)`;
+          }
+        } else {
+          translateWidth+=widthTranslate;
+          if (translateWidth >= widthTranslate) {
+            translateWidth = (imageSlide.length - 1) * -widthTranslate;
+          }
+          for (let k = 0; k < imageSlide.length; k++) {
+            imageSlide[k].style.transform = `translateX(${translateWidth}px)`;
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
