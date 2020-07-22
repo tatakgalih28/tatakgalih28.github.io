@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Variable CSS with JS</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --blur: 0px;
+      --spacing: 10px;
+      --color: #000000;
+    }
+    body {
+      background-color: darkslategray;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .container h1 {
+      color: white;
+    }
+    .container h1 span {
+      color: var(--color);
+    }
+    .image__container img {
+      width: 100%;
+      height: auto;
+      padding: var(--spacing);
+      background-color: var(--color);
+      filter: blur(var(--blur));
+    }
+    .input__container {
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1>Update Variables <span>CSS</span> with <span>JS</span></h1>
+      <div class="input__container">
+        <div class="spacing">
+          <label for="spacing">Spacing</label>
+          <input
+            type="range"
+            name="spacing"
+            min="10"
+            max="200"
+            value="10"
+            data-sizing="px"
+          />
+        </div>
+        <div class="blur">
+          <label for="blur">Blur</label>
+          <input
+            type="range"
+            name="blur"
+            min="0"
+            max="25"
+            value="0"
+            data-sizing="px"
+          />
+        </div>
+        <div class="color">
+          <label for="color">Color</label>
+          <input type="color" name="color" />
+        </div>
+      </div>
+      <div class="image__container">
+        <img src="images/slider1.jpg" alt="Images" />
+      </div>
+    </div>
+    <script>
+      const inputButton = document.querySelectorAll("input");
+      function changeValue() {
+        const suffix = this.dataset.sizing || "";
+        document.documentElement.style.setProperty(
+          `--${this.name}`,
+          this.value + suffix
+        );
+      }
+      inputButton.forEach((input) => {
+        input.addEventListener("change", changeValue);
+        input.addEventListener("mouseover", changeValue);
+      });
+    </script>
+  </body>
+</html>
