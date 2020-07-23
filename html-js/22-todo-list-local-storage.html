@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List App with Local Storage</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Open Sans", sans-serif;
+      }
+      body {
+        background-image: url("images/bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .container {
+        width: 500px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 5vh;
+      }
+      h1 {
+        text-align: center;
+        margin: 10px 0;
+      }
+      .input__container {
+        padding: 8px;
+        display: flex;
+      }
+      .input__container input {
+        padding: 5px;
+        font-size: 1.5rem;
+        border: 1px solid black;
+        outline: none;
+        width: 100%;
+        border-radius: 5px;
+      }
+      .input__container .btn__add {
+        display: inline-block;
+        padding: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        color: #00204a;
+        background-color: #ffffff;
+        border-radius: 5px;
+        border: solid 1px #00204a;
+      }
+      .input__container .btn__add:hover {
+        background-color: #00204a;
+        color: #ffffff;
+      }
+      #todoList {
+        padding: 8px;
+      }
+      #todoList ul li {
+        list-style: none;
+        margin-bottom: 5px;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+      }
+      #todoList ul li .remove {
+        display: inline-block;
+        padding: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        color: #f73859;
+        background-color: #ffffff;
+        border-radius: 5px;
+        border: solid 1px #f73859;
+        outline: none;
+      }
+      #todoList ul li .remove:hover {
+        background-color: #f73859;
+        color: #ffffff;
+      }
+      #todoList ul li span {
+        width: 100%;
+        color: #00204a;
+      }
+      #todoList ul li input,
+      #todoList ul li span {
+        margin-right: 5px;
+      }
+      #todoList ul li input:checked ~ span {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Your Agenda</h1>
+      <div class="input__container">
+        <input type="text" />
+        <button class="btn__add">Add</button>
+      </div>
+      <div id="todoList"></div>
+    </div>
+    <script>
+      const inputText = document.querySelector("input");
+      const btnSubmit = document.querySelector(".btn__add");
+      const todoContainer = document.querySelector("#todoList");
+
+      function getTodo() {
+        let todo = [];
+        const todoList = localStorage.getItem("todo");
+        if (todoList !== null) {
+          todo = JSON.parse(todoList);
+        }
+        return todo;
+      }
+
+      inputText.addEventListener("keydown", function (e) {
+        if (e.keyCode === 13) {
+          addTodo();
+        }
+      });
+
+      btnSubmit.addEventListener("click", addTodo);
+
+      function addTodo() {
+        if (inputText.value === "") {
+          alert("error");
+        } else {
+          const todos = getTodo();
+          todos.push(inputText.value);
+          localStorage.setItem("todo", JSON.stringify(todos));
+          inputText.value = "";
+          showTodo();
+        }
+      }
+
+      function showTodo() {
+        const todos = getTodo();
+
+        let html = "<ul>";
+        for (let i = 0; i < todos.length; i++) {
+          html += `<li><input type="checkbox"><span>${todos[i]}</span><button class="remove" id="${i}">Delete</button></li>`;
+        }
+        html += "</ul>";
+        todoContainer.innerHTML = html;
+
+        const removeButton = document.querySelectorAll("button.remove");
+        const liElement = document.querySelectorAll("ul li");
+
+        removeButton.forEach((button) => {
+          button.addEventListener("click", removeTodo);
+        });
+      }
+
+      function removeTodo() {
+        const todos = getTodo();
+        todos.splice(this.id, 1);
+        localStorage.setItem("todo", JSON.stringify(todos));
+        showTodo();
+        console.log(todos);
+      }
+      showTodo();
+    </script>
+  </body>
+</html>
