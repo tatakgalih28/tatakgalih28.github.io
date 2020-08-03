@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>Nav</title>
+  <link rel="stylesheet"
+        href="css/style.css" />
+</head>
+
+<body>
+  <nav>
+    <div class="container d-flex-nav">
+      <a href="#">
+        <h1 class="logo">byTatak</h1>
+      </a>
+      <ul>
+        <li><a class="active"
+             href="#about">about</a></li>
+        <li><a href="#download">download</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <section class="bg-image"
+           id="about">
+    <div class="container">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+        expedita minima asperiores, dicta sit in placeat vero quae, atque
+        error consequuntur. Expedita doloremque exercitationem ad omnis
+        aspernatur perferendis, totam repellendus voluptas nulla illo enim
+        quis pariatur vitae? Reprehenderit consectetur consequatur ipsa totam
+        delectus, assumenda alias provident ipsam? Sapiente a molestiae
+        veritatis, quisquam ullam impedit fugiat!</p>
+    </div>
+  </section>
+  <section id="download">
+    <div class="container">
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nam
+        labore a mollitia laborum obcaecati, at tenetur sint eos vel ipsam
+        voluptatem fugiat assumenda saepe doloribus autem impedit natus, porro
+        magnam commodi nihil perferendis. Similique dolorum neque animi ullam
+        placeat pariatur, eveniet quidem obcaecati.</p>
+    </div>
+  </section>
+  <section id="contact">
+    <div class="container">
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis
+        aliquam optio molestiae accusamus id, hic nihil eos sequi cumque
+        voluptates rerum. Mollitia, vel reiciendis. Autem dolor ex
+        consequuntur, nihil officiis quae totam doloremque inventore fuga
+        ducimus, sunt praesentium, consectetur a distinctio quas nam.</p>
+    </div>
+  </section>
+  <script>
+    const section = document.querySelectorAll("section");
+    const navButton = document.querySelectorAll("ul li a");
+    console.log(navButton);
+
+    function navActive() {
+      for (let index = 0; index < section.length; index++) {
+        const position = Math.round(
+          section[index].getBoundingClientRect().top
+        );
+        const sectionAttribute = section[index].getAttribute("id");
+        console.log(sectionAttribute);
+        if (position <= 0) {
+          removeActive();
+          for (let index = 0; index < navButton.length; index++) {
+            const buttonAttribute = navButton[index];
+            if (
+              buttonAttribute.getAttribute("href").slice(1) ===
+              sectionAttribute
+            ) {
+              navButton[index].classList.add("active");
+            } else {
+              navButton[index].classList.remove("active");
+            }
+          }
+        }
+      }
+    }
+
+    function removeActive() {
+      for (let index = 0; index < navButton.length; index++) {
+        navButton[index].classList.remove("active");
+      }
+    }
+    window.addEventListener("scroll", navActive);
+  </script>
+</body>
+
+</html>
