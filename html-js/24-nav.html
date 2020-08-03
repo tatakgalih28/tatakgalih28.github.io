@@ -6,8 +6,54 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
   <title>Nav</title>
-  <link rel="stylesheet"
-        href="css/style.css" />
+  <style>
+    * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+nav {
+  padding: 12px 0;
+  background-color: blueviolet;
+  position: fixed;
+  width: 100%;
+}
+nav a {
+  text-decoration: none;
+  color: white;
+}
+nav ul li a:hover,
+nav ul li a.active {
+  border-bottom: solid 2px #ffffff;
+}
+.container {
+  margin: 0 -10px;
+  width: 1000px;
+  margin: 0 auto;
+}
+.d-flex-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+nav ul li {
+  list-style: none;
+  display: inline;
+  margin-left: 20px;
+}
+section {
+  height: 100vh;
+  padding: 100px 0 0;
+}
+.bg-image {
+  background-image: url(../images/bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+  </style>
 </head>
 
 <body>
