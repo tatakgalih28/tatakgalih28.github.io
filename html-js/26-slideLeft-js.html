@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Slide</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        margin: 5vh 0;
+        font-family: sans-serif;
+      }
+      .container {
+        width: 500px;
+        margin: 0 auto;
+      }
+      .card {
+        width: 500px;
+        display: flex;
+        overflow: hidden;
+        scroll-behavior: smooth;
+      }
+      .card__container {
+        flex-shrink: 0;
+        margin-right: 15px;
+        width: 300px;
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+      }
+      .card__container:last-child {
+        margin-right: 0;
+      }
+      .card__header {
+        width: 100%;
+        height: 250px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        overflow: hidden;
+      }
+      .card__header img {
+        width: 100%;
+        height: auto;
+      }
+      .card__content,
+      .card__footer {
+        padding: 10px 5px;
+        background-color: #c8e8ea;
+      }
+      .card__content {
+        border-bottom: solid 1px black;
+      }
+      .card__footer {
+        overflow: hidden;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+      .card__footer button {
+        display: inline-block;
+        padding: 5px 8px;
+        background: linear-gradient(to right, #74deee, #67d3e3);
+        border: none;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card__container">
+          <div class="card__header">
+            <img src="https://source.unsplash.com/random/100x100" alt="" />
+          </div>
+          <div class="card__content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, repellat?</p>
+          </div>
+          <div class="card__footer">
+            <button>Read More</button>
+          </div>
+        </div>
+        <div class="card__container">
+          <div class="card__header">
+            <img src="https://source.unsplash.com/random/100x100" alt="" />
+          </div>
+          <div class="card__content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, repellat?</p>
+          </div>
+          <div class="card__footer">
+            <button>Read More</button>
+          </div>
+        </div>
+        <div class="card__container">
+          <div class="card__header">
+            <img src="https://source.unsplash.com/random/100x100" alt="" />
+          </div>
+          <div class="card__content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, repellat?</p>
+          </div>
+          <div class="card__footer">
+            <button>Read More</button>
+          </div>
+        </div>
+        <div class="card__container">
+          <div class="card__header">
+            <img src="https://source.unsplash.com/random/100x100" alt="" />
+          </div>
+          <div class="card__content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, repellat?</p>
+          </div>
+          <div class="card__footer">
+            <button>Read More</button>
+          </div>
+        </div>
+      </div>
+      <button id="prev">Prev</button>
+      <button id="next">Next</button>
+    </div>
+    <script>
+      const prevBtn = document.querySelector("#prev");
+      const nextBtn = document.querySelector("#next");
+      const conCarousel = document.querySelector(".card");
+      prevBtn.addEventListener("click", () => {
+        conCarousel.scrollLeft -= 315;
+        console.log(conCarousel.scrollLeft);
+        if (conCarousel.scrollLeft === 0) {
+          conCarousel.scrollLeft = 743;
+        }
+      });
+      nextBtn.addEventListener("click", () => {
+        conCarousel.scrollLeft += 315;
+        console.log(conCarousel.scrollLeft);
+        if (conCarousel.scrollLeft > 630) {
+          conCarousel.scrollLeft = 0;
+        }
+      });
+    </script>
+  </body>
+</html>
